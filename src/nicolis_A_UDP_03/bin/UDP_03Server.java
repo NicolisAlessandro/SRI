@@ -25,7 +25,7 @@ class UDP_03 {
             System.out.println(1);
             sck.receive(p_rece);
             System.out.println(2);
-            System.out.println("p_rece = " + new String(p_rece.getData(), p_rece.getData().length));
+            System.out.println("p_rece = " + new String(p_rece.getData()));
             p_send = new DatagramPacket(
                     p_rece.getData(),
                     p_rece.getLength(),

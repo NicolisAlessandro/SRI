@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static nicolis_A_http_cl_01.bin.http_f_01.*;
+import static nicolis_A_http_cl_01.file.http_f_01.*;
 
 class http_cl_01 {
     public static void main(String[] args) throws IOException {

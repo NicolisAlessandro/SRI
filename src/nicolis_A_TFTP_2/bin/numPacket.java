@@ -20,13 +20,13 @@ public enum numPacket {
         operationCode = packetTypeInt;
     }
 
-    public static int getOperationCode() {
+    public int getOperationCode() {
         return operationCode;
     }
 
-    public static numPacket findByValue(int intType) {
+    public numPacket findByValue(int intType) {
         for (numPacket packetOperationCode : values()) {
-            if (numPacket.getOperationCode() == intType) {
+            if (packetOperationCode.getOperationCode() == intType) {
                 return packetOperationCode;
             }
         }
