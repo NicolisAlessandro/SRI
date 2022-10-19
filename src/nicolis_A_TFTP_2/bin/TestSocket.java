@@ -1,6 +1,9 @@
 package nicolis_A_TFTP_2.bin;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -16,14 +19,14 @@ public class TestSocket {
 
             Scanner sc = new Scanner(System.in);
             String l = sc.nextLine();
-            while (l.length() > 0){
+            while (l.length() > 0) {
                 out.println(l);
                 System.out.println("-->" + in.readLine());
                 l = sc.nextLine();
             }
             cs.close();
 
-        }catch (IOException ex) {
+        } catch (IOException ex) {
             System.out.println(ex);
             throw new RuntimeException(ex);
         }

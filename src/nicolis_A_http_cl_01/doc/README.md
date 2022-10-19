@@ -3,9 +3,10 @@
 ---
 
 ## Consegna
+
 In allegato trovato il file di testo contenente il flusso di dati fra browser e server WEB.
 
-La richiesta intercettata è: http://local.marconivr.it/quintabi/hopper/
+La richiesta intercettata ï¿½: http://local.marconivr.it/quintabi/hopper/
 
 In questo caso il server automaticamente fornisce index.html.
 

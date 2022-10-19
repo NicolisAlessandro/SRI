@@ -6,7 +6,7 @@ import java.util.Base64;
 
 class http_f_01 {
 
-    public static String creaHeader(long length){
+    public static String creaHeader(long length) {
 
         StringBuilder header;
         header = new StringBuilder();
@@ -25,12 +25,12 @@ class http_f_01 {
         // Controllo se la pagina esiste
         File file = new File(pagina);
 
-        if(file.exists()) {
+        if (file.exists()) {
 
             scrittura.println(creaHeader(file.length()));
             BufferedReader html = new BufferedReader(new FileReader(pagina));
             String riga;
-            while((riga = html.readLine()) != null){
+            while ((riga = html.readLine()) != null) {
                 scrittura.println(riga);
             }
             return true;
@@ -43,7 +43,7 @@ class http_f_01 {
         foto = "sito" + foto;
         File file = new File(foto);
 
-        if(file.exists()) {
+        if (file.exists()) {
 
             scrittura.println(creaHeader(file.length()));
 

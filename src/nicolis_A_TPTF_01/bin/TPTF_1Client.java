@@ -1,14 +1,9 @@
 package nicolis_A_TPTF_01.bin;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class TPTF_1Client {
@@ -80,14 +75,14 @@ public class TPTF_1Client {
             datagramSocket.receive(inBoundDatagramPacket);
 
             // Getting the first 4 characters from the TFTP packet
-            byte[] opCode = { bufferByteArray[0], bufferByteArray[1] };
+            byte[] opCode = {bufferByteArray[0], bufferByteArray[1]};
 
 
             if (opCode[1] == OP_ERROR) {
                 reportError();
             } else if (opCode[1] == OP_DATAPACKET) {
                 // Check for the TFTP packets block number
-                byte[] blockNumber = { bufferByteArray[2], bufferByteArray[3] };
+                byte[] blockNumber = {bufferByteArray[2], bufferByteArray[3]};
 
                 DataOutputStream dos = new DataOutputStream(byteOutOS);
                 dos.write(inBoundDatagramPacket.getData(), 4,
@@ -103,7 +98,7 @@ public class TPTF_1Client {
 
     private void sendAcknowledgment(byte[] blockNumber) {
 
-        byte[] ACK = { 0, OP_ACK, blockNumber[0], blockNumber[1] };
+        byte[] ACK = {0, OP_ACK, blockNumber[0], blockNumber[1]};
 
         // TFTP Server communicates back on a new PORT
         // so get that PORT from in bound packet and
