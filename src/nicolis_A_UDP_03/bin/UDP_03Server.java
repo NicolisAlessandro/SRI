@@ -6,12 +6,16 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 class UDP_03 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         InetAddress ip;
-        DatagramSocket sck = null;
+        DatagramSocket sck;
 
-        sck = new DatagramSocket(2000);
-        ip = InetAddress.getByName("172.16.20.14");
+        try {
+            sck = new DatagramSocket(2000);
+            ip = InetAddress.getByName("172.16.20.14");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("sck = " + sck.getInetAddress());
         DatagramPacket p_rece, p_send;
 
@@ -23,14 +27,19 @@ class UDP_03 {
 
         while (true) {
             System.out.println(1);
-            sck.receive(p_rece);
-            System.out.println(2);
-            System.out.println("p_rece = " + new String(p_rece.getData()));
-            p_send = new DatagramPacket(
-                    p_rece.getData(),
-                    p_rece.getLength(),
-                    p_rece.getSocketAddress());
-            sck.send(p_send);
+            try {
+                sck.receive(p_rece);
+
+                System.out.println(2);
+                System.out.println("p_rece = " + new String(p_rece.getData()));
+                p_send = new DatagramPacket(
+                        p_rece.getData(),
+                        p_rece.getLength(),
+                        p_rece.getSocketAddress());
+                sck.send(p_send);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
 

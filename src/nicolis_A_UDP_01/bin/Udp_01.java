@@ -1,4 +1,4 @@
-package nicolis_A_Udp_01.bin;
+package nicolis_A_UDP_01.bin;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
