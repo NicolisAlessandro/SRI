@@ -28,27 +28,10 @@ public class TPTF_2Client {
         String fileName = "filecorto";
         TPTF_2Client tFTPClientNet = new TPTF_2Client();
         tFTPClientNet.get(fileName);
-
     }
 
-    private String richiestaFile() {
-        Scanner s = new Scanner(System.in);
-        String file = null;
-        System.out.println(" 1 orario generale\n 2 orario professore\n 3 orario classi\n 4 orario aula\n");
-        int num = s.nextInt();
-        switch (num) {
-            case 1:
-                file = s.nextLine();
-                break;
-            case 2:
-                break;
-            default:
-                // code block
-        }
-        return file;
-    }
 
-    private void get(String fileName) throws IOException {
+    public void get(String fileName) throws IOException {
 
         // STEP0: prepare for communication
         inetAddress = InetAddress.getByName(TFTP_SERVER_IP);

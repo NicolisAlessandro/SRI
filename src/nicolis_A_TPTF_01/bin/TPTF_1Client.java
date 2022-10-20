@@ -8,12 +8,6 @@ import java.util.Scanner;
 
 public class TPTF_1Client {
 
-    /*
-     * TFTP Protocol As per RFC 1350 opcode - operation 1 - Read request (RRQ) 2
-     * - Write request (WRQ) 3 - Data (DATA) 4 - Acknowledgment (ACK) 5 - Error
-     * (ERROR)
-     */
-
     private static final String TFTP_SERVER_IP = "172.16.1.99";
     private static final int TFTP_DEFAULT_PORT = 69;
 
@@ -57,7 +51,6 @@ public class TPTF_1Client {
 
         // STEP 3: write file to local disc
         writeFile(byteOutOS, fileName);
-
     }
 
     private ByteArrayOutputStream receiveFile() throws IOException {
@@ -132,6 +125,7 @@ public class TPTF_1Client {
      * TFTP packet data size is maximum 512 bytes on last packet it will be less
      * than 512 bytes
      */
+
     private boolean isLastPacket(DatagramPacket datagramPacket) {
         return datagramPacket.getLength() < 512;
     }

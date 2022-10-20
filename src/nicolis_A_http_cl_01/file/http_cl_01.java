@@ -7,8 +7,10 @@ import java.net.Socket;
 import static nicolis_A_http_cl_01.file.http_f_01.*;
 
 class http_cl_01 {
+
+
     public static void main(String[] args) throws IOException {
-        int porta = 2000;
+        int porta = 80;
         ServerSocket serverSocketsoket = new ServerSocket(porta);
         Socket socket;
 
