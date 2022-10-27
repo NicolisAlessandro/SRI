@@ -12,14 +12,17 @@ public class Client {
 
         InetAddress ipTarget = null;
         try {
-            ipTarget = InetAddress.getLocalHost();
+            //ipTarget = InetAddress.getLocalHost();
+            ipTarget = InetAddress.getByName("172.16.3.102");
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
 
-        MTPClient mtpClient = new MTPClient(12345);
+        MTPClient mtpClient = new MTPClient(13455);
 
-        mtpClient.connect(ipTarget, 1234);
+        mtpClient.connect(ipTarget, 3232);
+
+        //mtpClient.connect(ipTarget, 1234);
         mtpClient.sendPacket(new MTPRegistrationRequest("nicolis"));
 
         System.out.println("End");
