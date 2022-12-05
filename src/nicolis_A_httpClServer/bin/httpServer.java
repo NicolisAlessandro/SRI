@@ -5,16 +5,10 @@ import java.net.*;
 
 class httpServer {
         public static void main(String[] args) throws IOException{
-                ServerSocket serverSock = null;
+                ServerSocket serverSock = new ServerSocket(3232);;
                 Socket cs = null;
                 int numero = 1;
-                System.out.print("Creazione ServerSocket...");
-                try{
-                        serverSock = new ServerSocket(11111);
-                }catch (IOException e) {
-                        System.err.println(e.getMessage());
-                        System.exit(1);
-                }
+
                 while (numero<3){
                         System.out.print("Attesa connessione...");
                         try { cs = serverSock.accept(); }

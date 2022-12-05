@@ -7,37 +7,34 @@ import java.net.URL;
 public class httpClient {
 
     public static void main(String[] args) throws IOException {
-
+        if (args.length < 1) return;
         URL url = new URL(args[0]);
 
-        Socket s = null;
-        DataInputStream is = null;
-        try
-        {
-            s = new Socket("localhost", 11111);
-            is = new DataInputStream(s.getInputStream());
-        }
-        catch (IOException e)
-        {
-            System.out.println(e.getMessage());
-            System.exit(1);
-        }
+        String hostname = url.getHost();
+        int port = 80;
+
+        Socket s = new Socket(hostname, port);
+
         System.out.println("Socket creata: " + s);
-        try
-        {
-            String line;
-            while( (line=is.readLine())!=null )
-            {
-                System.out.println("Ricevuto: " + line);
-                if (line.equals("Stop"))
-                    break;
-            }
-            is.close();
-            s.close();
-        }
-        catch (IOException e)
-        {
-            System.out.println(e.getMessage());
+
+        OutputStream output = s.getOutputStream();
+        PrintWriter writer = new PrintWriter(output, true);
+
+        writer.println("HEAD " + url.getPath() + " HTTP/1.1");
+        writer.println("Host: " + hostname);
+        writer.println("User-Agent: Simple Http Client");
+        writer.println("Accept: text/html");
+        writer.println("Accept-Language: en-US");
+        writer.println("Connection: close");
+        writer.println();
+
+        InputStream input = s.getInputStream();
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
         }
     }
 }
